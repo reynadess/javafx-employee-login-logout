@@ -1,8 +1,11 @@
 package com.reynadess.controllers;
 
+import java.io.IOException;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.reynadess.App;
 import com.reynadess.pojo.Employee;
 import com.reynadess.services.EmployeeServiceImpl;
 
@@ -40,7 +43,7 @@ public class RegisterController {
     private Button registerButton;
 
     @FXML
-    void registerMethod(ActionEvent event) {
+    void registerMethod(ActionEvent event) throws IOException {
     	Employee employee = new Employee();
     	employee.setEmployeeName(employeeNameTextField.getText());
     	employee.setEmail(emailTextField.getText());
@@ -48,6 +51,8 @@ public class RegisterController {
     	ApplicationContext context = new ClassPathXmlApplicationContext("SpringBeans.xml");
     	EmployeeServiceImpl employeeServices = context.getBean(EmployeeServiceImpl.class);
     	employeeServices.setEmployee(employee);
+    	System.out.println("Successfully Registered" + employee);
+    	App.setScene("Homepage");
     }
 
 }

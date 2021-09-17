@@ -46,7 +46,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public boolean setEmployee(Employee employee) {
-		employee.get
 		return this.employeeDao.setEmployee(employee);
 	}
 	

@@ -2,18 +2,10 @@ package com.reynadess;
 
 import java.io.IOException;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.reynadess.employeeDao.EmployeeDaoImpl;
-import com.reynadess.pojo.Employee;
-import com.reynadess.services.EmployeeServiceImpl;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class App extends Application{

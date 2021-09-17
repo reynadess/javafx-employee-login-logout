@@ -1,0 +1,9 @@
+CREATE DATABASE employees;
+
+CREATE TABLE employees(
+employee_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+employee_name VARCHAR(100) NOT NULL,
+employee_password VARCHAR(100) NOT NULL,
+email VARCHAR(100) NOT NULL
+);
+
