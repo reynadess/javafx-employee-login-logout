@@ -1,47 +1,62 @@
 package com.reynadess.pojo;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Employee {
-	int employeeId;
-	String employeeName;
-	String employeePassword;
-	String email;
+	IntegerProperty employeeId;
+	StringProperty employeeName;
+	StringProperty employeePassword;
+	StringProperty email;
+	
 	public Employee() {
-		super();
+		employeeId = new SimpleIntegerProperty();
+		employeeName = new SimpleStringProperty();
+		employeePassword = new SimpleStringProperty();
+		email = new SimpleStringProperty();
 	}
-	public Employee(int employeeId, String employeeName, String employeePassword, String email) {
-		super();
-		this.employeeId = employeeId;
-		this.employeeName = employeeName;
-		this.employeePassword = employeePassword;
-		this.email = email;
-	}
+	
 	public int getEmployeeId() {
-		return employeeId;
+		return employeeId.get();
 	}
 	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+		this.employeeId.set(employeeId);
 	}
+	
+	public IntegerProperty employeeIdProperty() {
+		return this.employeeId;
+	}
+	
 	public String getEmployeeName() {
-		return employeeName;
+		return employeeName.get();
 	}
 	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
+		this.employeeName.set(employeeName);
 	}
+	public StringProperty employeeNameProperty() {
+		return this.employeeName;
+	}
+	
 	public String getEmployeePassword() {
-		return employeePassword;
+		return employeePassword.get();
 	}
 	public void setEmployeePassword(String employeePassword) {
-		this.employeePassword = employeePassword;
+		this.employeePassword.set(employeePassword);;
 	}
+	public StringProperty employeePasswordProperty() {
+		return employeePassword;
+	}
+	
 	public String getEmail() {
-		return email;
+		return email.get();
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email.set(email);
 	}
-	@Override
-	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeePassword="
-				+ employeePassword + ", email=" + email + "]";
+	public StringProperty emailProperty() {
+		return email;
 	}
+
 }

@@ -14,6 +14,7 @@ public class EmployeeResultSetExtractor implements ResultSetExtractor<Employee>{
 	public Employee extractData(ResultSet rs) throws SQLException, DataAccessException {
 		if(rs.next()) {
 			Employee employee = new Employee();
+			System.out.println(employee);
 			employee.setEmployeeId(rs.getInt(1));
 			employee.setEmployeeName(rs.getString(2));
 			employee.setEmployeePassword(rs.getString(3));

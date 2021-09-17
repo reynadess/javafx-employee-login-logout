@@ -37,7 +37,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	
 	@Override
 	public Employee getEmployeeById(int employeeId) {
-		String query = "SELECT * FROM employees.employees WHERE employee_id = ?";
+		String query = "SELECT * FROM employees.employees WHERE employee_id = ?;";
 		
 		Employee employee = this.jdbcTemplate.query(query, new PreparedStatementSetter() {
 

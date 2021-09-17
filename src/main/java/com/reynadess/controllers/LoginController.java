@@ -44,11 +44,12 @@ public class LoginController {
     private Button signInButton;
     
     @FXML
-    void signInMethod(ActionEvent event) {
+    void signInMethod(ActionEvent event) throws IOException {
     	ApplicationContext context = new ClassPathXmlApplicationContext("SpringBeans.xml");
     	EmployeeServiceImpl employeeServices = context.getBean(EmployeeServiceImpl.class);
     	if(employeeServices.authorisation(Integer.parseInt(employeeIdTextField.getText()), passwordPasswordField.getText())) {
     		System.out.println("Login successful!");
+    		App.setScene("ViewAllEmployees");
     	}
     	else {
     		System.out.println("Login Failed!");
