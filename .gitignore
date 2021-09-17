@@ -16,7 +16,7 @@
 .metadata
 .project
 .recommenders
-.settings
+.settings/
 .springBeans
 .vscode
 /code
@@ -35,7 +35,7 @@ lib/
 manifest.yml
 out
 overridedb.*
-target
+target/
 .flattened-pom.xml
 secrets.yml
 .gradletasknamecache
