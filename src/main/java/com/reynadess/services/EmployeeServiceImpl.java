@@ -1,5 +1,8 @@
 package com.reynadess.services;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,6 +45,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean loginValidation(String employeeId, String password) {
+    	final String onlyDigitsRegex = "[0-9]";
+    	Pattern pattern = Pattern.compile(onlyDigitsRegex);
+    	Matcher matcher = pattern.matcher(employeeId);
+    	if(matcher.matches()) {
+    		if(password.isEmpty() == false) {
+    			return true;
+    		}
+    	}
+    	return false;
 	}
 
 	@Override

@@ -1,26 +1,27 @@
 package com.reynadess.controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.reynadess.App;
-import com.reynadess.employeeDao.EmployeeDaoImpl;
 import com.reynadess.services.EmployeeServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController implements Initializable{
 
     @FXML
     private Pane pane;
@@ -33,6 +34,9 @@ public class LoginController {
 
     @FXML
     private TextField employeeIdTextField;
+    
+    @FXML
+    private Label onlyDigitsLabel;    
 
     @FXML
     private Label passwordLabel;
@@ -43,10 +47,15 @@ public class LoginController {
     @FXML
     private Button signInButton;
     
+    EmployeeServiceImpl employeeServices;
+    
     @FXML
     void signInMethod(ActionEvent event) throws IOException {
-    	ApplicationContext context = new ClassPathXmlApplicationContext("SpringBeans.xml");
-    	EmployeeServiceImpl employeeServices = context.getBean(EmployeeServiceImpl.class);
+    	if(employeeServices.loginValidation(employeeIdTextField.getText(), passwordPasswordField.getText()) == false) {
+    		onlyDigitsLabel.setText("Digits only please!");
+    		return;
+    	}
+    	onlyDigitsLabel.setText("");
     	if(employeeServices.authorisation(Integer.parseInt(employeeIdTextField.getText()), passwordPasswordField.getText())) {
     		System.out.println("Login successful!");
     		App.setScene("ViewAllEmployees");
@@ -59,7 +68,23 @@ public class LoginController {
     @FXML
     void RegisterNewEmployeeMethod(ActionEvent event) throws IOException {
     	App.setScene("RegisterEmployee");
-    }    
+    }
 
+    @FXML
+    void employeeIdTextFieldValidation(KeyEvent event) {
+    	
+    	if(employeeServices.loginValidation(employeeIdTextField.getText(), passwordPasswordField.getText())) {
+    		onlyDigitsLabel.setText("");
+    		System.out.println(employeeIdTextField.getText());
+    	}
+    	else {
+    		onlyDigitsLabel.setText("Digits only please!");
+    	}
+    }
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+    	ApplicationContext context = new ClassPathXmlApplicationContext("SpringBeans.xml");
+    	employeeServices = context.getBean(EmployeeServiceImpl.class);		
+	}
 }

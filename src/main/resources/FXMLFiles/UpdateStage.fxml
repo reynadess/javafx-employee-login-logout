@@ -11,12 +11,11 @@
       <TextField fx:id="nameTextField" layoutX="107.0" layoutY="107.0" />
       <Label fx:id="emailName" layoutX="166.0" layoutY="169.0" />
       <Label fx:id="nameLabel" layoutX="160.0" layoutY="112.0" />
-      <TextField fx:id="updateEmail" layoutX="107.0" layoutY="164.0" />
+      <TextField fx:id="emailTextField" layoutX="107.0" layoutY="164.0" />
       <Button fx:id="updateButton" layoutX="119.0" layoutY="216.0" mnemonicParsing="false" onAction="#updateData" text="Update" />
       <Separator layoutX="5.0" layoutY="52.0" prefHeight="0.0" prefWidth="291.0" />
-      <Label fx:id="closeLabel" layoutX="243.0" layoutY="19.0" onMouseClicked="#closeMethod" text="Close" />
       <Label fx:id="successLabel" layoutX="132.0" layoutY="264.0" />
       <Label fx:id="nameLabel" layoutX="28.0" layoutY="112.0" text="Name    :" />
-      <Label fx:id="mailidLabel" layoutX="28.0" layoutY="169.0" text="Email    :" />
+      <Label fx:id="emailLabel" layoutX="28.0" layoutY="169.0" text="Email    :" />
    </children>
 </Pane>

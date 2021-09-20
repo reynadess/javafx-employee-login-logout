@@ -67,9 +67,6 @@ public class ViewAllEmployeesController implements Initializable {
 		updateTableColumn.setCellFactory(buttonPopulate("Update"));
 		deleteTableColumn.setCellFactory(buttonPopulate("Delete"));
 		viewTableColumn.setCellFactory(buttonPopulate("View"));
-
-		buttonPopulate("Delete");
-		buttonPopulate("View");
 		allEmployeesTableView.getColumns().addAll(updateTableColumn, deleteTableColumn, viewTableColumn);
 
 		ApplicationContext context = new ClassPathXmlApplicationContext("SpringBeans.xml");
@@ -119,9 +116,7 @@ public class ViewAllEmployeesController implements Initializable {
 								}
 							});
 						} else if (buttonName.equals("Delete")) {
-							System.out.println();
 						} else {
-							System.out.println();
 						}
 					}
 				};

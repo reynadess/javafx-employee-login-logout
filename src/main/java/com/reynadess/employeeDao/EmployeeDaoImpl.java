@@ -14,6 +14,9 @@ import com.reynadess.pojo.Employee;
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao{
 	JdbcTemplate jdbcTemplate;
+	private static final String getAllEmployeesQuery = "SELECT * FROM employees.employees;";
+	private static final String getEmployeeByIdQuery = "SELECT * FROM employees.employees WHERE employee_id = ?;";
+	private static final String setEmployeeQuery = "INSERT INTO employees.employees(employee_name, employee_password, email) VALUES (?, ?, ?);";
 	
 	public EmployeeDaoImpl() {
 		super();
@@ -30,8 +33,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	
 	@Override
 	public List<Employee> getAllEmployees() {
-		String query = "SELECT * FROM employees.employees;";
-		List<Employee> employees = this.jdbcTemplate.query(query, new EmployeeMapper());
+		final String query = "SELECT * FROM employees.employees;";
+		List<Employee> employees = this.jdbcTemplate.query(EmployeeDaoImpl.getAllEmployeesQuery, new EmployeeMapper());
 		return employees;
 	}
 	
@@ -39,7 +42,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public Employee getEmployeeById(int employeeId) {
 		String query = "SELECT * FROM employees.employees WHERE employee_id = ?;";
 		
-		Employee employee = this.jdbcTemplate.query(query, new PreparedStatementSetter() {
+		Employee employee = this.jdbcTemplate.query(EmployeeDaoImpl.getEmployeeByIdQuery, new PreparedStatementSetter() {
 
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
@@ -54,7 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public boolean setEmployee(Employee employee) {
 		String query = "INSERT INTO employees.employees(employee_name, employee_password, email) VALUES (?, ?, ?);";
-		int updated = this.jdbcTemplate.update(query, new PreparedStatementSetter() {
+		int updated = this.jdbcTemplate.update(EmployeeDaoImpl.setEmployeeQuery, new PreparedStatementSetter() {
 
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
