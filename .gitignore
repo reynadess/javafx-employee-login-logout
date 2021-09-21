@@ -52,3 +52,4 @@ target/classes/com/reynadess/services/EmployeeServiceImpl.class
 target/classes/com/reynadess/employeeDao/EmployeeDaoImpl$2.class
 application.properties
 
+*.class
